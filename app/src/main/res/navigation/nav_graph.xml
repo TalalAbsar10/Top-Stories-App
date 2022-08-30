@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/fragment_top_stories">
+
+    <fragment
+        android:id="@+id/fragment_top_stories"
+        android:name="com.example.egym.topstories.presentation.top_stories_list.TopStoriesListFragment"
+        android:label="fragment_top_stories"
+        tools:layout="@layout/fragment_top_stories">
+
+        <action
+            android:id="@+id/action_fragment_top_stories_to_top_stories_sections"
+            app:destination="@id/fragment_top_stories_sections">
+            <argument
+                android:name="id"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/fragment_top_stories_sections"
+        android:name="com.example.egym.topstories.presentation.top_stories_sections.TopStoriesSectionsFragment"
+        android:label="fragment_top_stories_sections"
+        tools:layout="@layout/fragment_top_stories_sections">
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragment_top_stories_sections_to_fragment_top_stories_section_details"
+            app:destination="@id/fragment_top_stories_section_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_top_stories_section_details"
+        android:name="com.example.egym.topstories.presentation.top_stories_section_details.TopStoriesSectionDetailsFragment"
+        android:label="fragment_top_stories_sections_details"
+        tools:layout="@layout/fragment_top_stories_section_details">
+
+        <argument
+            android:name="resultParcelable"
+            app:argType="com.example.egym.topstories.data.data_source.dto.top_stories_details_dto.Result" />
+        <action
+            android:id="@+id/action_fragment_top_stories_section_details_to_fragment_top_stories_section_details_webview"
+            app:destination="@id/fragment_top_stories_section_details_webview" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_top_stories_section_details_webview"
+        android:name="com.example.egym.topstories.presentation.top_stories_section_details.TopStoriesSectionDetailsWebViewFragment"
+        android:label="fragment_top_stories_sections_details_webview"
+        tools:layout="@layout/fragment_top_stories_section_details_webview">
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+</navigation>
